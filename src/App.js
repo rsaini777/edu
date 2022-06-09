@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import Form from "./Form";
+import Option from "./Option";
 
 function App() {
+  const [email, setEmail] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [phone, setPhone] = useState("");
+  const [changescreen, setChangeScreen] = useState(false);
+  const [paymentscreen, setPaymentscreen] = useState(false);
+  const [detailscreen, setDetailscreen] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {changescreen ? (
+        <Option
+          paymentscreen={paymentscreen}
+          setPaymentscreen={setPaymentscreen}
+          detailscreen={detailscreen}
+          setDetailscreen={setDetailscreen}
+        />
+      ) : (
+        <Form
+          email={email}
+          setEmail={setEmail}
+          firstname={firstname}
+          lastname={lastname}
+          phone={phone}
+          setFirstname={setFirstname}
+          setLastname={setLastname}
+          setPhone={setPhone}
+          setChangeScreen={setChangeScreen}
+        />
+      )}
     </div>
   );
 }
